@@ -25,7 +25,7 @@ suite('platform - terminalEnvironment', async () => {
 	suite('getShellIntegrationInjection', () => {
 		suite('should not enable', () => {
 			// This test is only expected to work on Windows 10 build 18309 and above
-			(getWindowsBuildNumber() < 18309 ? test.skip : test)('when isFeatureTerminal or when no executable is provided', () => {
+			(getWindowsBuildNumber() < 18309 ? test.skip : test)('when isFeatureTerminal or when no executable is provided', async () => {
 				ok(!await getShellIntegrationInjection({ executable: pwshExe, args: ['-l', '-NoLogo'], isFeatureTerminal: true }, enabledProcessOptions, defaultEnvironment, logService, productService, true));
 				ok(await getShellIntegrationInjection({ executable: pwshExe, args: ['-l', '-NoLogo'], isFeatureTerminal: false }, enabledProcessOptions, defaultEnvironment, logService, productService, true));
 			});
